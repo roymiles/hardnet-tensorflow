@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-import nets.HardNet as HardNet
+import HardNet as HardNet
 
 pickle_checkpoint = "C:\\Users\\Roy\\source\\repos\\roymiles\\bench-match\\hardnet_checkpoint.pickle"
 
