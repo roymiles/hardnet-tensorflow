@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import HardNet as HardNet
 
-pickle_checkpoint = "C:\\Users\\Roy\\source\\repos\\roymiles\\bench-match\\hardnet_checkpoint.pickle"
+pickle_checkpoint = "hardnet_checkpoint.pickle"
 
 h = HardNet.net(pickle_checkpoint)
 
