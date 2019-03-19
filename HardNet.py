@@ -23,36 +23,27 @@ class net(object):
 
     def features(self, input):
 
-        # Must pad to make compatible with pytorch's conv2d that is used
-        # [[0, 0], [0, w], [0, h], [0, 0]] Before and after padding for each dimension
-        single_padding = [[0, 0], [1, 1], [1, 1], [0, 0]]
-        features = tf.pad(input, single_padding)
-        features = tf.nn.conv2d(features, self.weights['features.0.weight'], strides=[1,1,1,1], padding='VALID')
+        features = tf.nn.conv2d(input, self.weights['features.0.weight'], strides=[1,1,1,1], padding='SAME')
         features = tf.nn.batch_normalization(features, self.weights['features.1.running_mean'], self.weights['features.1.running_var'], None, None, 1e-6)
         features = tf.nn.relu(features) # 2
 
-        features = tf.pad(features, single_padding)
-        features = tf.nn.conv2d(features, self.weights['features.3.weight'], strides=[1,1,1,1], padding='VALID')
+        features = tf.nn.conv2d(features, self.weights['features.3.weight'], strides=[1,1,1,1], padding='SAME')
         features = tf.nn.batch_normalization(features, self.weights['features.4.running_mean'], self.weights['features.4.running_var'], None, None, 1e-6)
         features = tf.nn.relu(features) # 5
 
-        features = tf.pad(features, single_padding)
-        features = tf.nn.conv2d(features, self.weights['features.6.weight'], strides=[1,2,2,1], padding='VALID')
+        features = tf.nn.conv2d(features, self.weights['features.6.weight'], strides=[1,2,2,1], padding='SAME')
         features = tf.nn.batch_normalization(features, self.weights['features.7.running_mean'], self.weights['features.7.running_var'], None, None, 1e-6)
         features = tf.nn.relu(features) # 8
 
-        features = tf.pad(features, single_padding)
-        features = tf.nn.conv2d(features, self.weights['features.9.weight'], strides=[1,1,1,1], padding='VALID')
+        features = tf.nn.conv2d(features, self.weights['features.9.weight'], strides=[1,1,1,1], padding='SAME')
         features = tf.nn.batch_normalization(features, self.weights['features.10.running_mean'], self.weights['features.10.running_var'], None, None, 1e-6)
         features = tf.nn.relu(features) # 11
 
-        features = tf.pad(features, single_padding)
-        features = tf.nn.conv2d(features, self.weights['features.12.weight'], strides=[1,2,2,1], padding='VALID')
+        features = tf.nn.conv2d(features, self.weights['features.12.weight'], strides=[1,2,2,1], padding='SAME')
         features = tf.nn.batch_normalization(features, self.weights['features.13.running_mean'], self.weights['features.13.running_var'], None, None, 1e-6)
         features = tf.nn.relu(features) # 14
 
-        features = tf.pad(features, single_padding)
-        features = tf.nn.conv2d(features, self.weights['features.15.weight'], strides=[1,1,1,1], padding='VALID')
+        features = tf.nn.conv2d(features, self.weights['features.15.weight'], strides=[1,1,1,1], padding='SAME')
         features = tf.nn.batch_normalization(features, self.weights['features.16.running_mean'], self.weights['features.16.running_var'], None, None, 1e-6)
         features = tf.nn.relu(features) # 17
 
